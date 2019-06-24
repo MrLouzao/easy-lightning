@@ -4,6 +4,7 @@
   "description": "Server deployment that publishes a REST API to bypass through existant Lightning Network implementations.",
   "main": "index.js",
   "scripts": {
+    "compile-rpc": "echo \"Not implemented yet feature\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MrLouzao/easy-lightning/issues"
   },
-  "homepage": "https://github.com/MrLouzao/easy-lightning#readme"
+  "homepage": "https://github.com/MrLouzao/easy-lightning#readme",
+  "dependencies": {
+    "grpc": "^1.21.1"
+  }
 }
