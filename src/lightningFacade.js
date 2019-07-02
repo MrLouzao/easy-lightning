@@ -7,21 +7,30 @@ class LightningFacade {
     constructor(config){
         this.rpcServerUrl = `http://${config.node.host}:${config.node.port}`;
         console.log("Trying to stablish connection with... ", this.rpcServerUrl);
-        this.serverInstance = this.getNodeInstance(config.node.implementation);
+        this.serverInstance = this._createNodeInstance(config.node.implementation);
+    }
+
+
+    _createNodeInstance(implementation) {
+        if(ImplementationEnum.LND == implementation){
+            console.log("LND implementation selected")
+            return new LndWrapper(this.rpcServerUrl);
+        }
+        else {
+            throw Error(`Implementation ${implementation} not exists or integration is not implemented yet`);
+        }
     }
 
 
     /**
      * Obtain the node handler instance depending on selected implementation
-     * @param {} implementation 
      */
-    getNodeInstance(implementation){
-        if(ImplementationEnum.LND == implementation){
-            console.log("LND implementation selected")
-            return new LndWrapper();
+    getNodeInstance(){
+        if(!this.serverInstance){
+            throw Error(`Couldnt initialize the rpc client`);
         }
         else {
-            throw Error(`Implementation ${implementation} not exists or integration is not implemented yet`);
+            return this.serverInstance;
         }
     }
 

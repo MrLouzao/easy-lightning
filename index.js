@@ -4,7 +4,7 @@ const LightningFacade = require('./src/lightningFacade');
 
 // Read from config file
 const config = getConfiguration();
-let lightningNode = new LightningFacade(config);
+let lightningNode = new LightningFacade(config).getNodeInstance();
 
 console.log(`
                ,/
@@ -17,3 +17,6 @@ console.log(`
           /,'
          /'
 `);
+
+// Try to read channels
+lightningNode.getAllChannels();
