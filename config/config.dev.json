@@ -2,6 +2,6 @@
     "node": {
         "implementation": "lnd",
         "host": "localhost",
-        "port": 8040
+        "port": 8080
     }
 }

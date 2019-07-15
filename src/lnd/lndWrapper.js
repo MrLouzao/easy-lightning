@@ -29,6 +29,16 @@ class LndWrapper {
     }
 
 
+    getNodeInfo() {
+        console.log("Obtaining all node info");
+        const emptyObject = {};
+        this.lightningClient.GetInfo(emptyObject, (err, res) => {
+            if(err) console.error(err);
+            else console.log(res);
+        });
+    }
+
+
     getAllChannels(){
         console.log("No channels for LND implementation");
         // Flag 1: active only

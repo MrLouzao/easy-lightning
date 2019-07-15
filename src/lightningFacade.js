@@ -5,7 +5,7 @@ const {LndWrapper} = require('./lnd/lndWrapper');
 class LightningFacade {
 
     constructor(config){
-        this.rpcServerUrl = `http://${config.node.host}:${config.node.port}`;
+        this.rpcServerUrl = `${config.node.host}:${config.node.port}`;
         console.log("Trying to stablish connection with... ", this.rpcServerUrl);
         this.serverInstance = this._createNodeInstance(config.node.implementation);
     }
@@ -32,6 +32,11 @@ class LightningFacade {
         else {
             return this.serverInstance;
         }
+    }
+
+
+    getNodeInfo(){
+        this.serverInstance.getNodeInfo();
     }
 
 
